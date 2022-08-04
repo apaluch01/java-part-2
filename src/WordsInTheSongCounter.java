@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class WordsInTheSongCounter {
-    static String[] changeSongToArray() {
+    static String[] getSongAsArray() {
         String song = "In the town where I was born\n" +
                 "Lived a man who sailed to sea\n" +
                 "And he told us of his life\n" +
@@ -47,7 +47,7 @@ public class WordsInTheSongCounter {
     }
 
     public static void main(String[] args){
-        String[] lyrics = changeSongToArray();
+        String[] lyrics = getSongAsArray();
         Scanner input = new Scanner(System.in);
         String word = input.nextLine();//exceptions for input space etc
         int wordCount = 0;
