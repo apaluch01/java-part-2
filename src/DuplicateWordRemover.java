@@ -1,7 +1,4 @@
-import java.util.Arrays;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Scanner;
+import java.util.*;
 
 public class DuplicateWordRemover {
     static List getSongAsList() {
@@ -49,6 +46,13 @@ public class DuplicateWordRemover {
         return lyricsList;
     }
 
+    static List<String> removeDuplicates(List<String> withWordDuplicates) {
+        Set<String> noWordDuplicates = new HashSet<>(withWordDuplicates);
+        ArrayList<String> withoutWordDuplicates = new ArrayList<String>(noWordDuplicates);
+
+        return withoutWordDuplicates;
+    }
+
     public static void main(String[] args) {
         List<String> lyrics = getSongAsList();
         Scanner input = new Scanner(System.in);
@@ -63,6 +67,14 @@ public class DuplicateWordRemover {
             }
         }
         System.out.println(wordCount);
-    }
 
+        lyrics = removeDuplicates(lyrics);
+
+        Collections.sort(lyrics, Comparator.comparing(String::length));
+
+        ListIterator<String> wordsIteratorAfterSort = lyrics.listIterator();
+        while (wordsIteratorAfterSort.hasNext()){
+            System.out.println(wordsIteratorAfterSort.next());
+        }
+    }
 }
