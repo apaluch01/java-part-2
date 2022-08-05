@@ -1,5 +1,7 @@
 import java.util.Arrays;
 import java.util.List;
+import java.util.ListIterator;
+import java.util.Scanner;
 
 public class DuplicateWordRemover {
     static List getSongAsList() {
@@ -48,7 +50,19 @@ public class DuplicateWordRemover {
     }
 
     public static void main(String[] args) {
+        List<String> lyrics = getSongAsList();
+        Scanner input = new Scanner(System.in);
+        String word = input.nextLine();//exceptions for input space etc
 
+        ListIterator<String> wordsIterator = lyrics.listIterator();
+        int wordCount = 0;
+
+        while (wordsIterator.hasNext()){
+            if (wordsIterator.next().equals(word)){
+                wordCount++;
+            }
+        }
+        System.out.println(wordCount);
     }
 
 }
