@@ -1,9 +1,26 @@
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Objects;
 import java.util.Set;
 
 class User {
     private String name;
     int age;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return age == user.age &&
+                Objects.equals(name, user.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, age);
+    }
+
     public User(String name, int age) {
         this.name = name;
         this.age = age;
@@ -27,6 +44,8 @@ class User {
         users.add(new User("Veronika", 20));
         users.add(new User("Denis", 30));
         users.add(new User("Max", 27));
+
+        users.remove(null);
 
         if (users.size() == 3) {
             System.out.println("System works well!");
