@@ -41,7 +41,8 @@ public class YellowSubmarineRemover {
                 "Yellow submarine, yellow submarine\n" +
                 "We all live in a yellow submarine\n" +
                 "Yellow submarine, yellow submarine";
-        String songLyrics = song.replace("\n", " ").replace(",", "").toLowerCase();
+        String songLyrics = song.replace("\n", " ").replace(",", "")
+                .replace("(", "").replace(")", "").toLowerCase();
         ArrayList<String> lyricsArrayList = new ArrayList<>(Arrays.asList(songLyrics.split(" ")));
         return lyricsArrayList;
     }

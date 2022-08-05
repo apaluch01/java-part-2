@@ -41,7 +41,8 @@ public class WordsInTheSongCounter {
                 "Yellow submarine, yellow submarine\n" +
                 "We all live in a yellow submarine\n" +
                 "Yellow submarine, yellow submarine";
-        String songLyrics = song.replace("\n", " ").replace(",", "").toLowerCase();
+        String songLyrics = song.replace("\n", " ").replace(",", "")
+                .replace("(", "").replace(")", "").toLowerCase();
         String[] lyricsArray = songLyrics.split(" ");
         return lyricsArray;
     }
