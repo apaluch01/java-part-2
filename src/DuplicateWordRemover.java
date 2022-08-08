@@ -54,10 +54,18 @@ public class DuplicateWordRemover {
         return withoutWordDuplicates;
     }
 
+    static void inputExceptionHandling(String word) throws RuntimeException {
+        if (word.matches(".*[^a-z].*")) {
+            throw new InvalidInput("You must enter a lowercase word without any additional symbols");
+        }
+    }
+
     public static void main(String[] args) {
         List<String> lyrics = getSongAsList();
         Scanner input = new Scanner(System.in);
-        String word = input.nextLine();//exceptions for input space etc
+        String word = input.nextLine();
+
+        inputExceptionHandling(word);
 
         ListIterator<String> wordsIterator = lyrics.listIterator();
         int wordCount = 0;

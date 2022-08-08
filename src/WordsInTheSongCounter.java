@@ -1,4 +1,11 @@
+import java.awt.im.InputMethodHighlight;
 import java.util.Scanner;
+
+class InvalidInput extends RuntimeException {
+    public InvalidInput(String s){
+        super(s);
+    }
+}
 
 public class WordsInTheSongCounter {
     static String[] getSongAsArray() {
@@ -47,11 +54,20 @@ public class WordsInTheSongCounter {
         return lyricsArray;
     }
 
+    static void inputHandling(String word) throws RuntimeException {
+        if (word.matches(".*[^a-z].*")) {
+            throw new InvalidInput("You must enter a lowercase word without any additional symbols");
+        }
+    }
+
     public static void main(String[] args){
         String[] lyrics = getSongAsArray();
         Scanner input = new Scanner(System.in);
-        String word = input.nextLine();//exceptions for input space etc
+
+        String word = input.nextLine();
+        inputHandling(word);
         int wordCount = 0;
+
         for (int i = 0; i < lyrics.length; i++){
             if (lyrics[i].equals(word)){
                 wordCount++;
