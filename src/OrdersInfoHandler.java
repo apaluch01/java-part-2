@@ -38,6 +38,18 @@ public class OrdersInfoHandler {
         }
     }
 
+    static String checkHowManyOrders(String orderData) {
+        Pattern catcher = Pattern.compile("orders successfully processed: \\[([0-9]*)\\]");
+        Matcher matcher = catcher.matcher(orderData);
+
+        if (matcher.find()) {
+            return matcher.group(1);
+        }
+        else {
+            return "No orders found";
+        }
+    }
+
     public static void main(String[] args) {
         final String ORDER_1 = "app=edi_adapter_converter wingtipsTrace=8faeae6709355291 INFO  OrderCreateClient - " +
                 "action=EDIOrderSent originalFilename=Integration_test_Contract customerName=0005084863 " +
@@ -52,5 +64,6 @@ public class OrdersInfoHandler {
         System.out.println(checkIfContainsUUID(ORDER_1));
         System.out.println(findOrderUUID(ORDER_1));
         System.out.println(findEmail(MAIL));
+        System.out.println(checkHowManyOrders(ORDER_2));
     }
 }
