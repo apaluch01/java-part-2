@@ -26,6 +26,18 @@ public class OrdersInfoHandler {
         }
     }
 
+    static String findEmail(String mailData) {
+        Pattern catcher = Pattern.compile("([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\\.[a-zA-Z0-9_-]+)");
+        Matcher matcher = catcher.matcher(mailData);
+
+        if (matcher.find()) {
+            return matcher.group();
+        }
+        else {
+            return "No match found";
+        }
+    }
+
     public static void main(String[] args) {
         final String ORDER_1 = "app=edi_adapter_converter wingtipsTrace=8faeae6709355291 INFO  OrderCreateClient - " +
                 "action=EDIOrderSent originalFilename=Integration_test_Contract customerName=0005084863 " +
@@ -39,5 +51,6 @@ public class OrdersInfoHandler {
 
         System.out.println(checkIfContainsUUID(ORDER_1));
         System.out.println(findOrderUUID(ORDER_1));
+        System.out.println(findEmail(MAIL));
     }
 }
