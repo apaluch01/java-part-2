@@ -16,12 +16,12 @@ public class DeStartingWordFilter {
                 "Because without the right team in place, missed deadlines, duplicative work, and post-migration workflow " +
                 "issues become much greater risks.";
 
-        Pattern deCatcher = Pattern.compile("\\b(de)\\w+");
+        Pattern deCatcher = Pattern.compile("(?<deStarting>\\b(de)\\w+)");
         Matcher deMatcher = deCatcher.matcher(text);
         ArrayList<String> deMatches = new ArrayList<String>();
 
         while (deMatcher.find()) {
-            deMatches.add(deMatcher.group());
+            deMatches.add(deMatcher.group("deStarting"));
         }
 
         Iterator iterateMatches = deMatches.iterator();
