@@ -3,15 +3,13 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 public class UniqueWordsPrinter {
-    static String readLyricsToString() {
+    static String readLyricsToString(String path) {
         StringBuilder lyrics = new StringBuilder();
-        try {
-            File lyricsText = new File("src/lyrics.txt");
-            Scanner lyricsReader = new Scanner(lyricsText);
+
+        try (Scanner lyricsReader = new Scanner(new File(path))){
             while (lyricsReader.hasNextLine()) {
                 lyrics.append(lyricsReader.nextLine()).append("\n");
             }
-            lyricsReader.close();
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
@@ -30,7 +28,8 @@ public class UniqueWordsPrinter {
     }
 
     public static void main(String[] args) {
-        HashSet<String> lyricsUniqueWords = removeDuplicates(readLyricsToString());
+        final String PATH = "src/lyrics.txt";
+        HashSet<String> lyricsUniqueWords = removeDuplicates(readLyricsToString(PATH));
 
         lyricsUniqueWords.forEach(System.out::println);
     }
