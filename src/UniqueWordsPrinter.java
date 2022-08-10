@@ -22,16 +22,15 @@ public class UniqueWordsPrinter {
         return lyricsString;
     }
 
-    static HashSet<String> convertStringtoHashSet(String lyricsString) {
+    static HashSet<String> removeDuplicates(String lyricsString) {
         String[] lyricsArray = lyricsString.split(" ");
         List<String> lyricsList = Arrays.asList(lyricsArray);
-        HashSet<String> lyricsUniqueWords = new HashSet<String>(lyricsList);
 
-        return lyricsUniqueWords;
+        return new HashSet<String>(lyricsList);
     }
 
     public static void main(String[] args) {
-        HashSet<String> lyricsUniqueWords = convertStringtoHashSet(readLyricsToString());
+        HashSet<String> lyricsUniqueWords = removeDuplicates(readLyricsToString());
 
         Iterator iterateWords = lyricsUniqueWords.iterator();
 
