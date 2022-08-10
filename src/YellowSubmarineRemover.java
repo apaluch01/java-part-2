@@ -1,7 +1,7 @@
 import java.util.*;
 
-public class DuplicateWordRemover {
-    static List getSongAsList() {
+public class YellowSubmarineRemover {
+    static ArrayList<String> getSongAsArrayList() {
         String song = "In the town where I was born\n" +
                 "Lived a man who sailed to sea\n" +
                 "And he told us of his life\n" +
@@ -43,47 +43,20 @@ public class DuplicateWordRemover {
                 "Yellow submarine, yellow submarine";
         String songLyrics = song.replace("\n", " ").replace(",", "")
                 .replace("(", "").replace(")", "").toLowerCase();
-        List<String> lyricsList = Arrays.asList(songLyrics.split(" "));
-        return lyricsList;
-    }
-
-    static List<String> removeDuplicates(List<String> withWordDuplicates) {
-        Set<String> noWordDuplicates = new HashSet<>(withWordDuplicates);
-
-        return new ArrayList<String>(noWordDuplicates);
-    }
-
-    static void inputExceptionHandling(String word) throws RuntimeException {
-        if (word.matches(".*[^a-z].*")) {
-            throw new InvalidInput("You must enter a lowercase word without any additional symbols");
-        }
+        ArrayList<String> lyricsArrayList = new ArrayList<>(Arrays.asList(songLyrics.split(" ")));
+        return lyricsArrayList;
     }
 
     public static void main(String[] args) {
-        List<String> lyrics = getSongAsList();
-        Scanner input = new Scanner(System.in);
+        ArrayList<String> lyrics = getSongAsArrayList();
 
-        System.out.println("Enter a word to search for:");
-        String word = input.nextLine();
+        lyrics.removeIf(word -> word.equals("yellow"));
+        lyrics.removeIf(word -> word.equals("submarine"));
 
-        inputExceptionHandling(word);
+        ListIterator<String> wordIterator = lyrics.listIterator();
 
-        ListIterator<String> wordsIterator = lyrics.listIterator();
-        int wordCount = 0;
-
-        while (wordsIterator.hasNext()){
-            if (wordsIterator.next().equals(word)){
-                wordCount++;
-            }
-        }
-        System.out.println(wordCount + "\n");
-
-        lyrics = removeDuplicates(lyrics);
-
-        Collections.sort(lyrics, Comparator.comparing(String::length));
-
-        for (String element : lyrics) {
-            System.out.println(element);
+        while (wordIterator.hasNext()) {
+            System.out.println(wordIterator.next());
         }
     }
 }
