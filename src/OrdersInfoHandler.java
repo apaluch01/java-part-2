@@ -17,7 +17,7 @@ public class OrdersInfoHandler {
             return matcher.group();
         }
         else {
-            return "No match found";
+            return null;
         }
     }
 
@@ -29,7 +29,7 @@ public class OrdersInfoHandler {
             return matcher.group();
         }
         else {
-            return "No match found";
+            return null;
         }
     }
 
@@ -41,7 +41,7 @@ public class OrdersInfoHandler {
             return matcher.group(1);
         }
         else {
-            return "No orders found";
+            return null;
         }
     }
 
