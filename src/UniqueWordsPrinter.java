@@ -32,10 +32,6 @@ public class UniqueWordsPrinter {
     public static void main(String[] args) {
         HashSet<String> lyricsUniqueWords = removeDuplicates(readLyricsToString());
 
-        Iterator iterateWords = lyricsUniqueWords.iterator();
-
-        while (iterateWords.hasNext()) {
-            System.out.println(iterateWords.next());
-        }
+        lyricsUniqueWords.forEach(System.out::println);
     }
 }
