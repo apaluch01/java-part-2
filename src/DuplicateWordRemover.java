@@ -62,6 +62,8 @@ public class DuplicateWordRemover {
     public static void main(String[] args) {
         List<String> lyrics = getSongAsList();
         Scanner input = new Scanner(System.in);
+
+        System.out.println("Enter a word to search for:");
         String word = input.nextLine();
 
         inputExceptionHandling(word);
@@ -74,7 +76,7 @@ public class DuplicateWordRemover {
                 wordCount++;
             }
         }
-        System.out.println(wordCount);
+        System.out.println(wordCount + "\n");
 
         lyrics = removeDuplicates(lyrics);
 
