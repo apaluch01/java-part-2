@@ -6,12 +6,7 @@ public class OrdersInfoHandler {
         Pattern catcher = Pattern.compile("orderUUID");
         Matcher matcher = catcher.matcher(orderInfo);
 
-        if (matcher.find()) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return matcher.find();
     }
 
     static String findOrderUUID(String orderInfo) {
