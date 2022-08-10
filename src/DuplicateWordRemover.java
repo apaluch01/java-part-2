@@ -49,9 +49,8 @@ public class DuplicateWordRemover {
 
     static List<String> removeDuplicates(List<String> withWordDuplicates) {
         Set<String> noWordDuplicates = new HashSet<>(withWordDuplicates);
-        ArrayList<String> withoutWordDuplicates = new ArrayList<String>(noWordDuplicates);
 
-        return withoutWordDuplicates;
+        return new ArrayList<String>(noWordDuplicates);
     }
 
     static void inputExceptionHandling(String word) throws RuntimeException {
@@ -81,9 +80,8 @@ public class DuplicateWordRemover {
 
         Collections.sort(lyrics, Comparator.comparing(String::length));
 
-        ListIterator<String> wordsIteratorAfterSort = lyrics.listIterator();
-        while (wordsIteratorAfterSort.hasNext()){
-            System.out.println(wordsIteratorAfterSort.next());
+        for (String element : lyrics) {
+            System.out.println(element);
         }
     }
 }
